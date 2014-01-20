@@ -7,10 +7,14 @@ NODE_TAR=node-$(NODE_VERSION).tar.gz
 $(NODE_TAR):
 	curl $(NODE_URL) > $(NODE_TAR)
 
-.PHONY: release
 build: node
 	docker build -t $(DOCKER_REPO)/node:$(NODE_VERSION) .
 
+.PHONY: test
+test: build
+	./test $(DOCKER_REPO)/node:$(NODE_VERSION) $(NODE_VERSION)
+
+.PHONY: build
 push: build
 	docker push $(DOCKER_REPO)/node
 

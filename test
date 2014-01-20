@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+docker_image=$1
+version=$2
+
+node_version=`docker run $docker_image node --version`
+
+# the passed version will not include the 'v' prefix
+if [ "$node_version" != "v$version" ]; then
+  echo "expected $node_version to equal v$version" 1>&2
+  exit 1;
+fi
