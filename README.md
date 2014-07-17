@@ -10,17 +10,16 @@ The strategy here is very simple:
   - add it to the docker image under `/opt/node`
   - add `/opt/node/bin/` to the path
 
-## Building the image
 
-```sh
-make build
-```
+## Branches
 
-## Pushing the image
+There are two automated docker (hub) branches here:
 
-```
-make push
-```
+  `master` -> `latest : contains the release stable version of node
+  `unstable` -> `unstable: contains the development version of node
+
+The branches must be manually updated to point to the most recent
+versions of node currently.
 
 ## LICENSE
 
